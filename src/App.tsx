@@ -4,7 +4,7 @@ import AppLayout from './components/AppLayout';
 function App() {
   return (
     <AppLayout>
-      <Heading>Hello</Heading>
+      <Heading>Todo Pa :D</Heading>
     </AppLayout>
   );
 }
