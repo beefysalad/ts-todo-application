@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Text } from '@chakra-ui/react';
+import { Box, Center, Flex, Link, Spacer, Text } from '@chakra-ui/react';
 import { FC } from 'react';
 
 interface FooterProps {
@@ -8,7 +8,15 @@ const Footer: FC<FooterProps> = ({ children }) => {
   return (
     <Box w='full' h='auto' py='5'>
       <Flex justifyContent='center'>
-        <Text>I am a footer</Text>
+        <Text fontSize='xs'>
+          Copyright &copy; 2022 :{' '}
+          <Link
+            href='https://github.com/beefysalad/ts-todo-application'
+            target='_blank'
+          >
+            Saladu
+          </Link>
+        </Text>
       </Flex>
     </Box>
   );
