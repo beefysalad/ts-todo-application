@@ -11,29 +11,46 @@ import {
   Input,
   Spacer,
   Text,
+  useToast,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 
 import { AddTodoState } from '../types/index';
-import { MdOutlineAdd } from 'react-icons/md';
+
 export const AddTodo = () => {
   const bg = useColorModeValue('gray.100', 'whiteAlpha.100');
   const [todo, setTodo] = useState<AddTodoState>({
     title: '',
     description: '',
   });
-  const [disabled, setDisabled] = useState<boolean>(true);
+
+  const toast = useToast();
   const handleAddTodo = (): void => {
-    alert(`${todo.title} - ${todo.description}`);
-  };
-  useEffect(() => {
-    if (todo.title.length > 0 && todo.description.length > 0) {
-      setDisabled(false);
+    let title: string, description: string, status: any;
+    if (todo.title.length === 0 && todo.description.length === 0) {
+      title = 'Whoops, Error!';
+      description = "Task title and description can't be empty";
+      status = 'error';
     } else {
-      setDisabled(true);
+      title = 'Yay, Success!';
+      description = 'Task has been added successfully';
+      status = 'success';
+      setTodo({
+        title: '',
+        description: '',
+      });
     }
-  }, [todo.title, todo.description]);
+    toast({
+      title,
+      description,
+      status,
+      duration: 5000,
+      position: 'top-right',
+      isClosable: true,
+    });
+  };
+
   return (
     <Box
       w={{ base: 'full', md: 'container.md' }}
@@ -42,33 +59,30 @@ export const AddTodo = () => {
       mx='auto'
       rounded='15'
       boxShadow='md'
+      py='0'
+      px={{ base: '3', md: '5', lg: '8' }}
     >
-      <Flex
-        w='full'
-        py='25'
-        px='15'
-        flexDirection='row'
-        justifyContent='center'
-      >
-        <Input
-          variant='filled'
-          placeholder='Task Title'
-          value={todo.title}
-          onChange={(e) => setTodo({ ...todo, title: e.target.value })}
-        />
-
-        <Input
-          variant='filled'
-          placeholder='Task Description'
-          value={todo.description}
-          onChange={(e) => setTodo({ ...todo, description: e.target.value })}
-        />
+      <Flex w='full' py='25' flexDirection='row' justifyContent='center'>
+        <HStack>
+          <Input
+            variant='filled'
+            placeholder='Task Title'
+            value={todo.title}
+            onChange={(e) => setTodo({ ...todo, title: e.target.value })}
+          />
+          <Input
+            variant='filled'
+            placeholder='Task Description'
+            value={todo.description}
+            onChange={(e) => setTodo({ ...todo, description: e.target.value })}
+          />
+        </HStack>
         <Button
           variant='solid'
           colorScheme='teal'
-          disabled={disabled}
           onClick={handleAddTodo}
-          ml='1rem'
+          ml='8px'
+          px='2rem'
         >
           Add todo
         </Button>
