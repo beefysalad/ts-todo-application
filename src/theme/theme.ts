@@ -30,6 +30,7 @@ const theme = extendTheme(config, {
             _focus: {
               borderColor: 'teal.500',
             },
+            bg: mode('gray.200', 'whiteAlpha.200')(props),
           },
         }),
       },
