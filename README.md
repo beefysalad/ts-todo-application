@@ -4,11 +4,12 @@ Just another simple todo application to practice with the basics of `TypeScript-
 
 # Roadmap
 
-- [ ] App Layout with Chakra-ui
-- [ ] useState
-- [ ] useEffect
-- [ ] useContext?
+- [x] App Layout with Chakra-ui
+- [x] useState
+- [x] useEffect
+- [x] useContext
 - [ ] CRUD (localStorage)
+- [ ] Pagination
 
 # Reference
 
