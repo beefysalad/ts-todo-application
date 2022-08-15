@@ -1,26 +1,21 @@
 import {
   Box,
   Button,
-  ButtonGroup,
-  Container,
   Flex,
-  FormControl,
-  FormLabel,
   HStack,
-  IconButton,
   Input,
-  Spacer,
-  Text,
   useToast,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { AddTodoState } from '../types/index';
-
-export const AddTodo = () => {
+interface AddTodoProps {
+  setTodos: (todo: any) => void;
+}
+export const AddTodo = ({ setTodos }: AddTodoProps) => {
   const bg = useColorModeValue('gray.100', 'whiteAlpha.100');
-  const [todo, setTodo] = useState<AddTodoState>({
+  const [tasks, setTasks] = useState<AddTodoState>({
     title: '',
     description: '',
   });
@@ -28,18 +23,20 @@ export const AddTodo = () => {
   const toast = useToast();
   const handleAddTodo = (): void => {
     let title: string, description: string, status: any;
-    if (todo.title.length === 0 && todo.description.length === 0) {
-      title = 'Whoops, Error!';
-      description = "Task title and description can't be empty";
-      status = 'error';
-    } else {
-      title = 'Yay, Success!';
-      description = 'Task has been added successfully';
-      status = 'success';
-      setTodo({
+
+    if (tasks.title.length > 0 && tasks.description.length > 0) {
+      setTasks({
         title: '',
         description: '',
       });
+      title = 'Yay, Success!';
+      description = 'Task has been added successfully';
+      status = 'success';
+      setTodos((prevTodo: any) => [...prevTodo, tasks]);
+    } else {
+      title = 'Whoops, Error!';
+      description = "Task title and description can't be empty";
+      status = 'error';
     }
     toast({
       title,
@@ -66,15 +63,17 @@ export const AddTodo = () => {
         <HStack>
           <Input
             variant='filled'
-            placeholder='Task Title'
-            value={todo.title}
-            onChange={(e) => setTodo({ ...todo, title: e.target.value })}
+            placeholder='Title'
+            value={tasks.title}
+            onChange={(e) => setTasks({ ...tasks, title: e.target.value })}
           />
           <Input
             variant='filled'
-            placeholder='Task Description'
-            value={todo.description}
-            onChange={(e) => setTodo({ ...todo, description: e.target.value })}
+            placeholder='Description'
+            value={tasks.description}
+            onChange={(e) =>
+              setTasks({ ...tasks, description: e.target.value })
+            }
           />
         </HStack>
         <Button

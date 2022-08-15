@@ -5,10 +5,7 @@ import { AddTodo } from './features/AddTodo/components/AddTodo';
 function App() {
   return (
     <AppLayout>
-      <Todo>
-        <AddTodo />
-        <TodoList />
-      </Todo>
+      <Todo />
     </AppLayout>
   );
 }
