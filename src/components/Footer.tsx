@@ -1,10 +1,9 @@
 import { Box, Center, Flex, Link, Spacer, Text } from '@chakra-ui/react';
-import { FC } from 'react';
 
 interface FooterProps {
   children?: React.ReactNode;
 }
-const Footer: FC<FooterProps> = ({ children }) => {
+const Footer = ({ children }: FooterProps) => {
   return (
     <Box w='full' h='auto' py='5'>
       <Flex justifyContent='center'>

@@ -1,10 +1,9 @@
-import { Center, Heading } from '@chakra-ui/react';
 import AppLayout from './components/AppLayout';
-
+import { AddTodo } from './features/AddTodo/components/AddTodo';
 function App() {
   return (
     <AppLayout>
-      <Heading>Todo Pa :D</Heading>
+      <AddTodo />
     </AppLayout>
   );
 }
