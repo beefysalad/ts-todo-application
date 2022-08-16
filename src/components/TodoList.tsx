@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Divider,
   Flex,
   Heading,
@@ -13,14 +14,14 @@ import {
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useContext, useEffect } from 'react';
 import { TodoContext } from './Todo';
-
+import { DeleteTodo } from '../features/DeleteTodo/components/DeleteTodo';
 export const TodoList = () => {
   const bg = useColorModeValue('gray.100', 'whiteAlpha.100');
-  const todos = useContext(TodoContext);
-  console.log(todos);
-  const renderTodos = todos.map((todo, index) => {
+  const { todos, setTodos } = useContext(TodoContext);
+
+  const renderTodos = todos.map((todo) => {
     return (
-      <Box mb='15px' key={index}>
+      <Box mb='15px' key={todo.key}>
         <Flex flexDirection='row'>
           <Box px='15' mb='15px'>
             <Heading size='lg'>{todo.title}</Heading>
@@ -28,13 +29,7 @@ export const TodoList = () => {
           </Box>
           <Spacer />
           <HStack>
-            <IconButton
-              fontSize='lg'
-              colorScheme='teal'
-              aria-label='Delete Todo'
-              icon={<AiFillDelete />}
-              _hover={{ transform: 'translateY(-0.15em)' }}
-            />
+            <DeleteTodo index={todo.key} />
             <IconButton
               fontSize='lg'
               colorScheme='teal'

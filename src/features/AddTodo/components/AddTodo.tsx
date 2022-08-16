@@ -7,18 +7,22 @@ import {
   useToast,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { useState } from 'react';
-
+import { useContext, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { TodoContext } from '../../../components/Todo';
 import { AddTodoState } from '../types/index';
+
 interface AddTodoProps {
-  setTodos: (todo: any) => void;
+  setTodos?: (todo: any) => void;
 }
-export const AddTodo = ({ setTodos }: AddTodoProps) => {
+export const AddTodo = () => {
   const bg = useColorModeValue('gray.100', 'whiteAlpha.100');
   const [tasks, setTasks] = useState<AddTodoState>({
     title: '',
     description: '',
   });
+  const { setTodos } = useContext(TodoContext);
+  const [index, setIndex] = useState<number>(0);
 
   const toast = useToast();
   const handleAddTodo = (): void => {
@@ -32,7 +36,13 @@ export const AddTodo = ({ setTodos }: AddTodoProps) => {
       title = 'Yay, Success!';
       description = 'Task has been added successfully';
       status = 'success';
-      setTodos((prevTodo: any) => [...prevTodo, tasks]);
+      const data = {
+        title: tasks.title,
+        description: tasks.description,
+        key: uuidv4(),
+      };
+      setTodos((prevTodo: any) => [...prevTodo, data]);
+      setIndex(index + 1);
     } else {
       title = 'Whoops, Error!';
       description = "Task title and description can't be empty";
