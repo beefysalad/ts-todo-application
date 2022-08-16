@@ -8,22 +8,31 @@ interface TodoProps {
   children?: React.ReactNode;
 }
 
-export const TodoContext = createContext<TodoType[]>([]);
+const TodoContextDefaultValue = {
+  todos: TodoService.getTodos(),
+  setTodos: (todos: any) => {},
+};
+
+export const TodoContext = createContext(TodoContextDefaultValue);
 
 export const Todo = ({ children }: TodoProps) => {
-  const [todo, setTodos] = useState<TodoType[]>(TodoService.getTodos() || []);
+  const [todos, setTodos] = useState<TodoType[]>(TodoContextDefaultValue.todos);
 
+  const TodoProviderValue = {
+    todo: { todos },
+    setState: (state: TodoType) => {},
+  };
   useEffect(() => {
-    TodoService.addTodos(todo);
-  }, [todo]);
+    TodoService.addTodos(todos);
+  }, [todos]);
 
   return (
     <>
-      <TodoContext.Provider value={todo}>
+      <TodoContext.Provider value={{ todos, setTodos }}>
         <Center mb='5'>
           <Heading>My Todo List</Heading>
         </Center>
-        <AddTodo setTodos={setTodos} />
+        <AddTodo />
         <TodoList />
       </TodoContext.Provider>
     </>
