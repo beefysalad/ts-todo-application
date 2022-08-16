@@ -25,7 +25,9 @@ export const TodoList = () => {
         <Flex flexDirection='row'>
           <Box px='15' mb='15px'>
             <Heading size='lg'>{todo.title}</Heading>
-            <Text textAlign='justify'>{todo.description}</Text>
+            <Text wordBreak='break-all' textAlign='justify'>
+              {todo.description}
+            </Text>
           </Box>
           <Spacer />
           <HStack>
