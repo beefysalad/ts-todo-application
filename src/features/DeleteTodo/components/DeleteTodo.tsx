@@ -10,10 +10,8 @@ import { AiFillDelete } from 'react-icons/ai';
 import { useContext } from 'react';
 import { TodoContext } from '../../../components/Todo';
 import { CustomModal } from '../../../components/CustomModal';
+import { DeleteTodoProps } from '../interface';
 
-interface DeleteTodoProps {
-  index: any;
-}
 export const DeleteTodo = ({ index }: DeleteTodoProps) => {
   const { todos, setTodos } = useContext(TodoContext);
 
