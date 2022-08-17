@@ -8,20 +8,16 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useContext, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { TodoContext } from '../../../components/Todo';
 import { AddTodoState } from '../interface/index';
 
-interface AddTodoProps {
-  setTodos?: (todo: any) => void;
-}
 export const AddTodo = () => {
   const bg = useColorModeValue('gray.100', 'whiteAlpha.100');
   const [tasks, setTasks] = useState<AddTodoState>({
     title: '',
     description: '',
   });
-  const { setTodos } = useContext(TodoContext);
+  const { todos, setTodos } = useContext(TodoContext);
   const [index, setIndex] = useState<number>(0);
 
   const toast = useToast();
@@ -39,7 +35,7 @@ export const AddTodo = () => {
       const data = {
         title: tasks.title,
         description: tasks.description,
-        key: uuidv4(),
+        key: todos.length + 1,
       };
       setTodos((prevTodo: any) => [...prevTodo, data]);
       setIndex(index + 1);
