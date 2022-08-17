@@ -6,7 +6,7 @@ import { TodoType } from '../types/index';
 import { TodoList } from './TodoList';
 
 const TodoContextDefaultValue = {
-  todos: TodoService.getTodos(),
+  todos: TodoService.getTodos() || [],
   setTodos: (todos: any) => {},
 };
 

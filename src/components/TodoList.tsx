@@ -19,7 +19,7 @@ import { UpdateTodo } from '../features/UpdateTodo/components/UpdateTodo';
 export const TodoList = () => {
   const bg = useColorModeValue('gray.100', 'whiteAlpha.100');
   const { todos, setTodos } = useContext(TodoContext);
-
+  console.log(todos);
   const renderTodos = todos.map((todo) => {
     return (
       <Box mb='15px' key={todo.key}>
