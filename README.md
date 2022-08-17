@@ -8,8 +8,9 @@ Just another simple todo application to practice with the basics of `TypeScript-
 - [x] useState
 - [x] useEffect
 - [x] useContext
-- [ ] CRUD (localStorage)
+- [x] CRUD (localStorage)
 - [ ] Pagination
+- [ ] Finished Tasks
 
 # Reference
 
