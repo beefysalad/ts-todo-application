@@ -10,7 +10,7 @@ import {
 import { useContext, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { TodoContext } from '../../../components/Todo';
-import { AddTodoState } from '../types/index';
+import { AddTodoState } from '../interface/index';
 
 interface AddTodoProps {
   setTodos?: (todo: any) => void;
