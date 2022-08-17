@@ -15,9 +15,7 @@ import { AiFillEdit } from 'react-icons/ai';
 import { CustomModal } from '../../../components/CustomModal';
 import { TodoContext } from '../../../components/Todo';
 import { TodoType } from '../../../types/index';
-interface UpdateTodoProps {
-  index: any;
-}
+import { UpdateTodoProps } from '../interface';
 export const UpdateTodo = ({ index }: UpdateTodoProps) => {
   const { todos, setTodos } = useContext(TodoContext);
   const { onOpen, isOpen, onClose } = useDisclosure();
