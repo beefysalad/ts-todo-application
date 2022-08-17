@@ -15,6 +15,7 @@ import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { useContext, useEffect } from 'react';
 import { TodoContext } from './Todo';
 import { DeleteTodo } from '../features/DeleteTodo/components/DeleteTodo';
+import { UpdateTodo } from '../features/UpdateTodo/components/UpdateTodo';
 export const TodoList = () => {
   const bg = useColorModeValue('gray.100', 'whiteAlpha.100');
   const { todos, setTodos } = useContext(TodoContext);
@@ -32,16 +33,9 @@ export const TodoList = () => {
           <Spacer />
           <HStack>
             <DeleteTodo index={todo.key} />
-            <IconButton
-              fontSize='lg'
-              colorScheme='teal'
-              aria-label='Delete Todo'
-              icon={<AiFillEdit />}
-              _hover={{ transform: 'translateY(-0.15em)' }}
-            />
+            <UpdateTodo index={todo.key} />
           </HStack>
         </Flex>
-
         <Divider />
       </Box>
     );

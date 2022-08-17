@@ -1,5 +1,5 @@
 export interface TodoType {
-  title: string;
-  description: string;
-  key: any;
+  title?: string;
+  description?: string;
+  key?: any;
 }

@@ -10,7 +10,6 @@ import {
 interface ModalProps {
   children: React.ReactNode;
   header: string;
-
   isOpen: boolean;
   onClose: () => void;
 }
