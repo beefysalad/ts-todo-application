@@ -35,7 +35,7 @@ export const DeleteTodo = ({ index }: DeleteTodoProps) => {
       />
       <CustomModal isOpen={isOpen} onClose={onClose} header={'Deleting Todo'}>
         <ModalBody>
-          <Text>Are you sure you want to delete this todo?</Text>
+          <Text>Are you sure you want to delete this task?</Text>
         </ModalBody>
         <ModalFooter>
           <Button colorScheme='teal' mr={3} onClick={onClose}>
