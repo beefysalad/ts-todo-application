@@ -10,7 +10,7 @@ Just another simple todo application to practice with the basics of `TypeScript-
 - [x] useContext
 - [x] CRUD (localStorage)
 - [ ] Pagination
-- [ ] Finished Tasks
+
 
 # Reference
 
