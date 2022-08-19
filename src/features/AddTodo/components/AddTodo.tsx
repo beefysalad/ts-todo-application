@@ -75,7 +75,7 @@ export const AddTodo = () => {
             <FormLabel>Task Title</FormLabel>
             <Input
               variant='filled'
-              placeholder='Title'
+              placeholder='e.g. Learn TypeScript'
               value={tasks.title}
               onChange={(e) => setTasks({ ...tasks, title: e.target.value })}
             />
@@ -93,7 +93,7 @@ export const AddTodo = () => {
             <FormLabel>Task Description</FormLabel>
             <Textarea
               variant='filled'
-              placeholder='Description'
+              placeholder='e.g. Practice firsthand about the fundamentals of TypeScript '
               value={tasks.description}
               onChange={(e) =>
                 setTasks({ ...tasks, description: e.target.value })
