@@ -23,19 +23,25 @@ export const TodoList = () => {
   const renderTodos = todos.map((todo) => {
     return (
       <Box mb='15px' key={todo.key}>
-        <Flex flexDirection='row'>
+        <Flex flexDirection='row' alignItems='center'>
           <Box px='15' mb='15px'>
             <Heading size='lg'>{todo.title}</Heading>
-            <Text wordBreak='break-all' textAlign='justify'>
+            <Text
+              wordBreak='break-all'
+              textAlign='justify'
+              whiteSpace='pre-line'
+            >
               {todo.description}
             </Text>
           </Box>
           <Spacer />
+
           <HStack>
             <DeleteTodo index={todo.key} />
             <UpdateTodo index={todo.key} />
           </HStack>
         </Flex>
+
         <Divider />
       </Box>
     );

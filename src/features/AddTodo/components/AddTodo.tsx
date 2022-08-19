@@ -6,6 +6,10 @@ import {
   Input,
   useToast,
   useColorModeValue,
+  VStack,
+  Textarea,
+  FormControl,
+  FormLabel,
 } from '@chakra-ui/react';
 import { useContext, useState } from 'react';
 import { TodoContext } from '../../../components/Todo';
@@ -49,7 +53,7 @@ export const AddTodo = () => {
       description,
       status,
       duration: 5000,
-      position: 'top-right',
+      position: 'bottom',
       isClosable: true,
     });
   };
@@ -65,23 +69,47 @@ export const AddTodo = () => {
       py='0'
       px={{ base: '3', md: '5', lg: '8' }}
     >
-      <Flex w='full' py='25' flexDirection='row' justifyContent='center'>
-        <HStack>
-          <Input
-            variant='filled'
-            placeholder='Title'
-            value={tasks.title}
-            onChange={(e) => setTasks({ ...tasks, title: e.target.value })}
-          />
-          <Input
+      <Flex w='full' mt='5' flexDirection='column'>
+        <VStack>
+          <FormControl>
+            <FormLabel>Task Title</FormLabel>
+            <Input
+              variant='filled'
+              placeholder='Title'
+              value={tasks.title}
+              onChange={(e) => setTasks({ ...tasks, title: e.target.value })}
+            />
+          </FormControl>
+
+          {/* <Input
             variant='filled'
             placeholder='Description'
             value={tasks.description}
             onChange={(e) =>
               setTasks({ ...tasks, description: e.target.value })
             }
-          />
-        </HStack>
+          /> */}
+          <FormControl>
+            <FormLabel>Task Description</FormLabel>
+            <Textarea
+              variant='filled'
+              placeholder='Description'
+              value={tasks.description}
+              onChange={(e) =>
+                setTasks({ ...tasks, description: e.target.value })
+              }
+              resize='none'
+            />
+          </FormControl>
+        </VStack>
+      </Flex>
+      <Box
+        py='5'
+        w='full'
+        as={Flex}
+        flexDirection='row'
+        justifyContent={{ base: 'center', md: 'end', lg: 'end' }}
+      >
         <Button
           variant='solid'
           colorScheme='teal'
@@ -89,9 +117,9 @@ export const AddTodo = () => {
           ml='8px'
           px='2rem'
         >
-          Add todo
+          Add
         </Button>
-      </Flex>
+      </Box>
     </Box>
   );
 };
