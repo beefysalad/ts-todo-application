@@ -1,30 +1,29 @@
 import {
   Box,
-  Button,
   Divider,
   Flex,
-  Heading,
   HStack,
-  IconButton,
-  Image,
   Spacer,
   Text,
+  Heading,
   useColorModeValue,
+  VStack,
 } from '@chakra-ui/react';
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
-import { useContext, useEffect } from 'react';
-import { TodoContext } from './Todo';
+import { useContext } from 'react';
 import { DeleteTodo } from '../features/DeleteTodo/components/DeleteTodo';
+import { FinishTodo } from '../features/FinishTodo/components/FinishTodo';
 import { UpdateTodo } from '../features/UpdateTodo/components/UpdateTodo';
+import { TodoContext } from './Todo';
+
 export const TodoList = () => {
   const bg = useColorModeValue('gray.100', 'whiteAlpha.100');
-  const { todos, setTodos } = useContext(TodoContext);
+  const { todos } = useContext(TodoContext);
   console.log(todos);
   const renderTodos = todos.map((todo) => {
     return (
       <Box mb='15px' key={todo.key}>
         <Flex flexDirection='row' alignItems='center'>
-          <Box px='15' mb='15px'>
+          <Flex px='15' mb='15px' direction='column' alignItems='start'>
             <Heading size='lg'>{todo.title}</Heading>
             <Text
               wordBreak='break-all'
@@ -33,12 +32,13 @@ export const TodoList = () => {
             >
               {todo.description}
             </Text>
-          </Box>
+          </Flex>
           <Spacer />
 
           <HStack>
             <DeleteTodo index={todo.key} />
             <UpdateTodo index={todo.key} />
+            <FinishTodo />
           </HStack>
         </Flex>
 
@@ -63,9 +63,7 @@ export const TodoList = () => {
           </Flex>
         </Box>
       ) : (
-        <Heading mt='5rem' textAlign='center'>
-          You currently have no tasks :c
-        </Heading>
+        <Heading textAlign='center'>You currently have no tasks :c</Heading>
       )}
     </>
   );

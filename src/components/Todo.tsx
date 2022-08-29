@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from 'react';
 import { AddTodo } from '../features/AddTodo/components/AddTodo';
 import TodoService from '../service/TodoService';
 import { TodoType } from '../types/index';
-import { TodoList } from './TodoList';
+import { TodoTabs } from './TodoTabs';
 
 const TodoContextDefaultValue = {
   todos: TodoService.getTodos() || [],
@@ -26,7 +26,7 @@ export const Todo = () => {
           <Heading>My Todo List</Heading>
         </Center>
         <AddTodo />
-        <TodoList />
+        <TodoTabs />
       </TodoContext.Provider>
     </>
   );

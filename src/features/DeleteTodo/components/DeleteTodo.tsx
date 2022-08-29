@@ -16,10 +16,9 @@ export const DeleteTodo = ({ index }: DeleteTodoProps) => {
   const { todos, setTodos } = useContext(TodoContext);
 
   const { onOpen, isOpen, onClose } = useDisclosure();
-  const handleDeleteTodo = (index: DeleteTodoProps): void => {
+  const handleDeleteTodo = (): void => {
     const newTodo = todos.filter((todo) => todo.key !== index);
     setTodos(newTodo);
-    console.log(todos);
   };
   return (
     <>
@@ -39,7 +38,7 @@ export const DeleteTodo = ({ index }: DeleteTodoProps) => {
           <Button colorScheme='teal' mr={3} onClick={onClose}>
             Cancel
           </Button>
-          <Button colorScheme='red' onClick={() => handleDeleteTodo(index)}>
+          <Button colorScheme='red' onClick={() => handleDeleteTodo()}>
             Delete
           </Button>
         </ModalFooter>

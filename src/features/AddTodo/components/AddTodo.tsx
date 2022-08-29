@@ -20,6 +20,7 @@ export const AddTodo = () => {
   const [tasks, setTasks] = useState<AddTodoState>({
     title: '',
     description: '',
+    status: '',
   });
   const { todos, setTodos } = useContext(TodoContext);
   const [index, setIndex] = useState<number>(0);
@@ -40,6 +41,7 @@ export const AddTodo = () => {
         title: tasks.title,
         description: tasks.description,
         key: todos.length + 1,
+        status: 'pending',
       };
       setTodos((prevTodo: any) => [...prevTodo, data]);
       setIndex(index + 1);
@@ -60,14 +62,14 @@ export const AddTodo = () => {
 
   return (
     <Box
-      w={{ base: 'full', md: 'container.md' }}
+      w={{ base: 'container.xs', md: 'container.md' }}
       bg={bg}
       maxW='container.md'
       mx='auto'
       rounded='15'
       boxShadow='md'
       py='0'
-      px={{ base: '3', md: '5', lg: '8' }}
+      px={{ base: '10', md: '5', lg: '8' }}
     >
       <Flex w='full' mt='5' flexDirection='column'>
         <VStack>
@@ -81,14 +83,6 @@ export const AddTodo = () => {
             />
           </FormControl>
 
-          {/* <Input
-            variant='filled'
-            placeholder='Description'
-            value={tasks.description}
-            onChange={(e) =>
-              setTasks({ ...tasks, description: e.target.value })
-            }
-          /> */}
           <FormControl>
             <FormLabel>Task Description</FormLabel>
             <Textarea

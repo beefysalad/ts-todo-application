@@ -23,6 +23,7 @@ export const UpdateTodo = ({ index }: UpdateTodoProps) => {
     title: '',
     description: '',
     key: 0,
+    status: '',
   });
   const getCurrentTodo = (): void => {
     const editingTodo = todos.filter((todo) => todo.key === index);
@@ -35,6 +36,7 @@ export const UpdateTodo = ({ index }: UpdateTodoProps) => {
             title: currentTodo.title,
             description: currentTodo.description,
             key: todo.key,
+            status: 'pending',
           }
         : todo;
     });

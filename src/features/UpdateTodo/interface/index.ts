@@ -1,3 +1,3 @@
 export interface UpdateTodoProps {
-  index: any;
+  index: number;
 }
